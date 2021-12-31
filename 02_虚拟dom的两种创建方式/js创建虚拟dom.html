@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用js创建虚拟dom</title>
+</head>
+<body>
+    <!-- 准备容器 -->
+    <div id="test"></div>
+
+    <!-- 第一步引入react.js核心库(必须最先引入) -->
+    <script src="../reactjs/react.js"></script>
+    <!-- 第二步引入react-dom.js,用于react操作dom-->
+    <script src="../reactjs/react-dom.js"></script>
+    <!-- 第三步引入babel.js，用于将jsx语法转换为js-->
+    <!-- <script src="../reactjs/babel.min.js"></script> -->
+
+    <script type="text/javascript"> /* 使用原始js创建虚拟dom*/
+        // 1.创建虚拟dom
+        // const VDOM = <h1>Hello,React</h1> /*此处不写双引号*/
+        // const VDOM = React.createElement("标签名",{标签属性},"标签内容")
+        // 使用js写嵌套麻烦，所以要用jsx
+        const VDOM = React.createElement("h1",{id:"title"},React.createElement("span",{},"Hello,React"))
+        // 2.渲染虚拟dom到页面
+        ReactDOM.render(VDOM,document.getElementById("test"))
+        
+    </script>
+</body>
+</html>
