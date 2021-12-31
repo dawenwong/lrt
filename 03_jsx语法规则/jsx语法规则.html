@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jsx语法规则</title>
+    <style>
+        .title{
+            background-color: orange;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 准备容器 -->
+    <div id="test"></div>
+
+    <!-- 第一步引入react.js核心库(必须最先引入) -->
+    <script src="../reactjs/react.js"></script>
+    <!-- 第二步引入react-dom.js,用于react操作dom-->
+    <script src="../reactjs/react-dom.js"></script>
+    <!-- 第三步引入babel.js，用于将jsx语法转换为js-->
+    <script src="../reactjs/babel.min.js"></script>
+
+    <script type="text/babel"> /* 这里要写babel*/
+        const myId = "aBcDeFg"
+        const myData = "pLjHyTgV"
+        // 1.创建虚拟dom
+        const VDOM = (
+           <div>
+                <h2 className="title" id={myId.toLocaleLowerCase()}>
+                    <span style={{color:"white",fontSize:"30px"}}>{myData.toLocaleLowerCase()}</span>
+                </h2>
+                <h2 className="title" id={myId.toUpperCase()+"1"}>
+                    <span style={{color:"white",fontSize:"30px"}}>{myData.toLocaleLowerCase()}</span>
+                </h2>
+                <input type="text" />
+                <Kid>123456</Kid>   
+           </div>
+        )  //<kid> 不存在，标签开头大写就是组件模板，小写就找对应的html标签
+
+        // 2.将虚拟dom渲染到页面
+        ReactDOM.render(VDOM,document.getElementById("test"))
+        /*
+            JSX 语法规则：
+                1.定义虚拟DOM时，不要将内容用引号包着
+                2.标签内，混入js表达式时要用花括号{}
+                3.样式的类名，用className="xxxx"，不要用class
+                4.内联样式,需要style={{key:value}}来写,如style={{color:"white",fontSize:"30px"}}
+                5.虚拟dom只能有一个根标签
+                6.input 标签要闭合，“/>”
+                7.
+                    7.1标签首字母小写开头则将该标签转为html中同名元素，如无同名元素就报错
+                    7.2若大写字母开头，react就去渲染对应的组件，若组件没有定义就报错
+                
+        
+        */
+    </script>
+</body>
+</html>
