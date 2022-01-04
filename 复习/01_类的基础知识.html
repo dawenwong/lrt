@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>类的基础知识</title>
+</head>
+<body>
+    <script type="text/javascript">
+    // 创建一个Personlei
+    class Person{
+        // 构造器方法
+        constructor(name,age){
+            // this 表示类的实例化对象
+            this.name = name;
+            this.age = age;
+        }
+
+        // 一般方法
+        speak(){
+            console.log(`我叫${this.name}，今年${this.age}岁`);
+        }
+    }
+    
+    // // 实例化一个Person对象
+    // const p1 = new Person("张三",19);
+    // p1.speak();
+    // const p2 = new Person("李四",22);
+    // p2.speak();
+    // console.log(p1)
+    // console.log(p2)
+
+    // 创建一个Student类，继承Person
+    class Student extends Person{
+        // 构造器
+        constructor(name,age,grade){
+            super(name,age);  //调用父类的构造器
+            this.grade = grade;
+        }
+
+        speak(){
+            console.log(`我叫${this.name}，今年${this.age}岁,在读${this.grade}`);
+        }
+    }
+    const s1 = new Student("李华",18,"高一");
+    s1.speak();
+    console.log(s1)
+    </script>
+</body>
+</html>
